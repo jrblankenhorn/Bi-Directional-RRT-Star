@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!--LOCAL COSTMAP-->
+  <node pkg="local_costmap" type="local_costmap_node" name="local_costmap_node" output="screen">
+    <param name="local_costmap_res" value="0.5"/>
+    <param name="local_costmap_height" value="200"/>
+    <param name="local_costmap_width" value="200"/>
+  </node>
+
+  <!--LOCAL PLANNER-->
+  <node pkg="local_planner" type="local_planner_node" name="local_planner_node" output="screen">
+    <param name="max_branch_length" value="2.5"/>
+    <param name="search_radius" value="5"/>
+  </node>
+
+  <!--RVIZ-->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find local_planner)/rviz/local_planner.rviz" required="true"/>
+
+  <!--TF pub-->
+  <node pkg="tf" type="static_transform_publisher" name="map" args="0 0 0 0 0 1 world map 10" />
+
+</launch>
