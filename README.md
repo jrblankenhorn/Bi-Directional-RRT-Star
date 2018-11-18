@@ -15,3 +15,4 @@ rosparams:
   local_costmap_width - width of costmap/c-space in meters
   max_branch_length - max length of a branch in an RRT* tree in meters
   search_radius - radius in meters algorithm will search for cheapest cost path/node to new random point
+
